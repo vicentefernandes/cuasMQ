@@ -9,10 +9,11 @@
 #include <utility>
 #include <csignal>
 #include <thread>
-#include "../cppkafka/include/cppkafka/consumer.h"
 
 #include <memory>
 #include <functional>
+
+#include <consumer.h>
 
 #ifndef CPPKAFKA_KAFKACONSUMER_H
 #define CPPKAFKA_KAFKACONSUMER_H

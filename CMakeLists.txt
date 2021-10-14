@@ -5,7 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_FLAGS -pthread)
 #include_directories(includes)
 
-add_subdirectory(cppkafka)
+add_subdirectory(include/cppkafka)
 
 add_executable(mano src/cuas_consumer_example.cpp)
 link_directories(cppkafka/build/src/lib/)
