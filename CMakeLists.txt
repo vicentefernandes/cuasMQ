@@ -7,6 +7,11 @@ set(CMAKE_CXX_FLAGS -pthread)
 
 add_subdirectory(include/cppkafka)
 
-add_executable(mano src/cuas_consumer_example.cpp)
+add_executable(cuas_consumer src/cuas_consumer_example.cpp)
 link_directories(cppkafka/build/src/lib/)
-target_link_libraries(mano cppkafka)
+target_link_libraries(cuas_consumer cppkafka)
+
+
+add_executable(cuas_producer src/cuas_producer_example.cpp)
+link_directories(cppkafka/build/src/lib/)
+target_link_libraries(cuas_producer cppkafka)

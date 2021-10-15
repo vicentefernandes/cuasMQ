@@ -136,7 +136,7 @@ private:
     CallbacksMap<std::string> _callbacks;
 
     Configuration _config;
-    std::shared_ptr<Consumer> _consumer;
+    std::shared_ptr<Consumer> _consumer; //TODO maybe unique_ptr is enough
     Message _msg;
     bool _running;
 };
