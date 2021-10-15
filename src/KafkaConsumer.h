@@ -28,19 +28,6 @@ using std::exception;
 using std::cout;
 using std::endl;
 
-
-/*
-template <typename T>
-void variadic_vector_emplace(std::vector<T>&) {}
-
-template <typename T, typename First, typename... Args>
-void variadic_vector_emplace(std::vector<T>& v, First&& first, Args&&... args)
-{
-    v.emplace_back(std::forward<First>(first));
-    variadic_vector_emplace(v, std::forward<Args>(args)...);
-}
-*/
-
 class KafkaConsumer {
 public:
     KafkaConsumer() = delete;
@@ -65,12 +52,7 @@ public:
     template<typename Function, typename... Args>
     void subscribe(const std::string & topic, Function&& callback, Args... args){
         _topics.emplace_back(topic);
-
-        ///_callbacksArgs[topic] = {};
-        ///variadic_vector_emplace(_callbacks[topic].second, std::forward<Args>(args)...);
-
         _callbacks[topic].second = {args...};
-
         link(topic, callback);
         _consumer->subscribe(_topics);
     }

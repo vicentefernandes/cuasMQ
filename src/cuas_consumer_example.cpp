@@ -4,6 +4,10 @@
 
 #include "KafkaConsumer.h"
 
+std::string ts_(){
+    auto value_ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now()).time_since_epoch()).count();
+    return std::to_string(value_ms);
+}
 
 class Mano {
 public:
@@ -12,6 +16,10 @@ public:
     std::string y;
 };
 
+
+void cbts_(const std::string data, std::any x) {
+    std::cout << "data: " << data << " curr ts: " << ts_() << std::endl;
+}
 
 void cb01(const std::string data, std::any x) {
     std::cout << "data:  >>> " << data << std::endl;
@@ -39,13 +47,12 @@ int main(){
     //otherwise, the data will be passed as copy
 
     auto mano = std::make_shared<Mano>("carallo", 333);
-    kc.subscribe("wifi01.detections", cb01, mano);
+    kc.subscribe("wifi01.detections", cbts_, mano);
 
     std::vector<Mano> mvec = {mano2, mano2};
-    kc.subscribe("wifi01.status", cb02, mvec);
+    kc.subscribe("wifi01.status", cbts_, mvec);
+    kc.subscribe("rf.status", cbts_, mvec);
 
-    ///TODO subscrive more topics and impleempt their _callbacks
-    /// it requires getting the topic name inside proccess func (currently the topic is hardcoded)
     kc.process();
 
 
