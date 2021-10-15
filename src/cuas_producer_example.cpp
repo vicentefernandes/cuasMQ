@@ -14,8 +14,28 @@ using std::cout;
 using std::endl;
 
 
+std::string ts_(){
+    auto value_ms = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::time_point_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now()).time_since_epoch()).count();
+    return std::to_string(value_ms);
+}
+
+
 int main(){
     KafkaProducer kp("localhost:9092");
-    kp.publish("wifi01.status", "wifi01 status message ... ");
-    kp.publish("wifi01.detections", "wifi01 detection message ...");
+    ;
+
+    kp.publishNoFlush("wifi01.detections", ts_());
+    kp.publishNoFlush("wifi01.status", ts_());
+    kp.publishNoFlush("wifi01.detections", ts_());
+    kp.publishNoFlush("wifi01.status", ts_());
+    kp.flush();
+
+
+    std::cout << "now ..." << endl;
+
+    kp.publishNoFlush("wifi01.detections", ts_());
+    kp.publishNoFlush("wifi01.status", ts_());
+    kp.publishNoFlush("wifi01.detections", ts_());
+    kp.publishNoFlush("wifi01.status", ts_());
+    kp.flush();
 }
