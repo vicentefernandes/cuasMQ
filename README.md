@@ -24,7 +24,7 @@ add_subdirectory(include/cuasMQ)
 3 - Link application against libcppkafka
 
 ```
-target_link_libraries(cuas_producer cppkafka)
+target_link_libraries(my_app cppkafka)
 ```
 
 2 - Include header files
