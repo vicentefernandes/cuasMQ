@@ -21,10 +21,10 @@ How to include the library into your application:
 add_subdirectory(include/cuasMQ)
 ```
 
-3 - Link application against libcppkafka
+3 - Link application against libcuasMQ and libcppkafka 
 
 ```
-target_link_libraries(my_app cppkafka)
+target_link_libraries(my_app cppkafka cuasMQLib)
 ```
 
 2 - Include header files
