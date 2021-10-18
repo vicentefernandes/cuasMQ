@@ -17,6 +17,9 @@ How to include the library into your application:
 
 2 - Include header files
 
+``#include <KafkaProducer.h>
+``
+``#include <KafkaConsumer.h>
 ``
 
 
