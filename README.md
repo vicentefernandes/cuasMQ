@@ -15,6 +15,18 @@ How to include the library into your application:
 - git submodule add git@github.com:vicentefernandes/cuasMQ.git
 - git submodule update --init --recursive
 
+2 - Include cuasMQ into the application CMakeLists
+
+```
+add_subdirectory(include/cuasMQ)
+```
+
+3 - Link application against libcppkafka
+
+```
+target_link_libraries(cuas_producer cppkafka)
+```
+
 2 - Include header files
 
 ``#include <KafkaProducer.h>
