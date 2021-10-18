@@ -15,6 +15,10 @@ Each partition is replicated across a configurable number of brokers to ensure f
 
 ***  https://medium.com/event-driven-utopia/understanding-kafka-topic-partitions-ae40f80552e8
 
+
+ git submodule add git@github.com:vicentefernandes/cuasMQ.git
+ and match match in cmakelists.txt
+ add_subdirectory(include/cppkafka)
  */
 
 
